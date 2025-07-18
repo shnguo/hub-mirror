@@ -9,5 +9,5 @@ docker pull {{ .Target }} && docker tag {{ .Target }} {{ .Source }}{{ end }}
 
 ```shell
 {{- range .Outputs }}
-ctl -n k8s.io image pull {{ .Target }} && ctl -n k8s.io image tag {{ .Target }} {{ .Source }}{{ end }}
+ctr -n k8s.io image pull {{ .Target }} && ctr -n k8s.io image tag {{ .Target }} {{ .Source }}{{ end }}
 ```
