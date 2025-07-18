@@ -93,6 +93,11 @@ func (c *Cli) Source2Target(source string, platform string) (*Output, error) {
 	if c.repository == "" {
 		target = "docker.io/" + c.username + "/" + strings.ReplaceAll(target, "/", ".")
 	} else {
+		if len(target) > 64 {
+    			target = target[len(target)-64:]
+		}
+		target = strings.TrimLeft(target, ".")
+		target = strings.TrimLeft(target, "-")
 		target = c.repository + "/" + strings.ReplaceAll(target, "/", ".")
 	}
 
